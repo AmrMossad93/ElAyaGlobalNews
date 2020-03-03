@@ -1,3 +1,4 @@
+import { Tab3PageModule } from './../tab3/tab3.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -38,15 +39,35 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'news',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../Pages/news/news.module').then(m => m.NewsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'newsDetails',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../Pages/news-single/news-single.module').then(m => m.NewsSinglePageModule)
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/news',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/news',
     pathMatch: 'full'
   }
 ];

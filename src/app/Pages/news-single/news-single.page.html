@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>news-single</ion-title>
+    <ion-title>{{article.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card> 
+    <ion-img [src]="article.urlToImage"></ion-img>  
+    <ion-card-content>
+      <div class="float-right">
+        <p>
+          {{article.publishedAt| date}} 
+        </p>
+      </div>
+      <ion-card-subtitle>{{article.author}}</ion-card-subtitle>
+      <p>{{article.description}}</p>
+      <ion-button href="{{article.url}}"  target="_blank" expand="block" fill="outline"><ion-icon name="eye-outline"></ion-icon>  Go To Source Link</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
